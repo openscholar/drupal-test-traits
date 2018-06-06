@@ -10,12 +10,12 @@ test:
   before_script:
     - apk add --no-cache py-pip
     - pip install docker-compose
-  script:
     - docker-compose up -d
-    - docker-compose exec drupal composer install -n --prefer-dist
-    - docker-compose exec drupal vendor/bin/parallel-lint src tests
-    - docker-compose exec drupal vendor/bin/phpcs --report-full
-    - docker-compose exec drupal vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle --account-name=admin --account-pass=password standard
-    - docker-compose exec drupal mkdir -p /tmp/test-results/phpunit
-    - docker-compose exec drupal chown -R www-data:www-data .
-    - docker-compose exec drupal vendor/bin/phpunit --debug --colors --bootstrap=web/core/tests/bootstrap.php --log-junit /tmp/test-results/phpunit/results.xml tests
+  script:
+    - docker-compose exec -T drupal composer install -n --prefer-dist
+    - docker-compose exec -T drupal vendor/bin/parallel-lint src tests
+    - docker-compose exec -T drupal vendor/bin/phpcs --report-full
+    - docker-compose exec -T drupal vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle --account-name=admin --account-pass=password standard
+    - docker-compose exec -T drupal mkdir -p /tmp/test-results/phpunit
+    - docker-compose exec -T drupal chown -R www-data:www-data .
+    - docker-compose exec -T drupal vendor/bin/phpunit --debug --colors --bootstrap=web/core/tests/bootstrap.php --log-junit /tmp/test-results/phpunit/results.xml tests
