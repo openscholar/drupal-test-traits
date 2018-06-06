@@ -1,6 +1,5 @@
 # Drupal Test Traits
 
-[![CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits.svg?style=svg)](https://circleci.com/gh/weitzman/drupal-test-traits)
 [![project-stage-badge]][project-stage-page]
 [![license-badge]][mit]
 
@@ -74,9 +73,9 @@ If you have your own `bootstrap.php` file, refer to [this project's version](src
 ## Contributing
 
 Contributions to the this project are welcome! Please file issues and pull requests.
-All pull requests are automatically tested at [CircleCI](https://circleci.com/gh/weitzman/drupal-test-traits).
+All pull requests are automatically tested via [GitLab CI](https://gitlab.com/weitzman/drupal-test-traits/pipelines).
 
-See docker-compose.yml for a handy development environment identical to our CircleCI.
+See docker-compose.yml for a handy development environment.
 
 See the [#testing channel on Drupal Slack](https://drupal.slack.com/messages/C223PR743) for discussion about this project. 
 
