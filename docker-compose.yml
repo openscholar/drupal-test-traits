@@ -1,7 +1,6 @@
 version: '3.1'
 
-# This file may be used for local development of DTT. It is not used by CircleCI.
-# This file mimics the environment that CircleCI uses to test DTT (tests/config.yml).
+# This file may be used for local development of DTT. It is also used by Gitlab CI.
 services:
   drupal:
     build: .
