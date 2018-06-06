@@ -58,7 +58,7 @@ If you have your own `bootstrap.php` file, refer to [this project's version](src
 - **GoutteTrait**  
   Makes Goutte available for browser control, and offers a few helper methods.
 
-- **WebDriverTrait** --   
+- **WebDriverTrait**   
   Make [ChromeDriver]([ChromeDriver](https://gitlab.com/DMore/chrome-mink-driver/)) available for browser control without the overhead of Selenium. Suitable for functional javascript testing.
 
 - **NodeCreationTrait**  
