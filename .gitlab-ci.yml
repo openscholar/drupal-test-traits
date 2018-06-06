@@ -10,7 +10,7 @@ test:
     - pip install docker-compose
   script:
     - docker-compose up -d
-    - docker-compose exec -T drupal -T composer install -n --prefer-dist
+    - docker-compose exec -T drupal composer install -n --prefer-dist
     - docker-compose exec drupal vendor/bin/parallel-lint src tests
     - docker-compose exec drupal vendor/bin/phpcs --report-full
     - docker-compose exec drupal vendor/bin/drush si -yv --db-url=mysql://circle:circle@127.0.0.1/circle --account-name=admin --account-pass=password standard
