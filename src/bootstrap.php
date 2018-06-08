@@ -26,6 +26,7 @@ require_once dtt_phpunit_find_root() . '/core/tests/bootstrap.php';
 function dtt_phpunit_gather_namespaces()
 {
     $extension_roots = dtt_phpunit_test_extenstion_directory_roots();
+    $extension_roots = array_filter($extension_roots, 'is_dir');
     $dirs = array_map('dtt_phpunit_find_extension_directories', $extension_roots);
     $dirs = array_reduce($dirs, 'array_merge', []);
 

@@ -14,7 +14,7 @@ test:
   script:
     - docker-compose exec -T drupal composer install -n --prefer-dist
     - docker-compose exec -T drupal vendor/bin/parallel-lint src tests
-    - docker-compose exec -T drupal vendor/bin/phpcs --report-full
+    - docker-compose exec -T drupal vendor/bin/phpcs -n --report-full
     - docker-compose exec -T drupal vendor/bin/drush si -yv --db-url=mysql://circle:circle@db/circle --account-name=admin --account-pass=password standard
     - docker-compose exec -T drupal chown -R www-data:www-data .
-    - docker-compose exec -T drupal vendor/bin/phpunit --debug --colors --bootstrap=web/core/tests/bootstrap.php tests
+    - docker-compose exec -T drupal vendor/bin/phpunit --debug --colors --bootstrap=src/bootstrap.php tests

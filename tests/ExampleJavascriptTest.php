@@ -20,16 +20,21 @@ class ExampleJavascriptTest extends ExistingSiteJavascriptBase
         $this->createTerm($vocab, ['name' => 'Term 1']);
         $this->createTerm($vocab, ['name' => 'Term 2']);
         $session = $this->getSession();
-        $web_assert = new WebAssert($session);
         $this->visit('/user/login');
+        $web_assert = $this->assertSession();
         $web_assert->statusCodeEquals(200);
+
+        // These lines are left here as examples of how to debug requests.
+        // file_put_contents('public://screenshot.png', $session->getScreenshot());
+        // file_put_contents('public://' . drupal_basename($session->getCurrentUrl()) . '.html', $this->getCurrentPageContent());
+
         $page = $this->getCurrentPage();
         $page->fillField('name', 'admin');
         $page->fillField('pass', 'password');
         $submit_button = $page->findButton('Log in');
         $submit_button->press();
         $web_assert->statusCodeEquals(200);
-        // Create an Article.
+        // Test autocomplete on article creation.
         $this->visit('/node/add/article');
         $web_assert->statusCodeEquals(200);
         $page = $this->getCurrentPage();
@@ -37,16 +42,9 @@ class ExampleJavascriptTest extends ExistingSiteJavascriptBase
         $tags = $page->findField('field_tags[target_id]');
         $tags->setValue('Ter');
         $tags->keyDown('m');
-        /** @var \Behat\Mink\Element\NodeElement $result */
-        $result = $page->waitFor('1', function () use ($page) {
-            $element = $page->find('css', '.ui-autocomplete li');
-            if (!empty($element) && $element->isVisible()) {
-                return $element;
-            }
-            return null;
-        });
+        $result = $web_assert->waitForElementVisible('css', '.ui-autocomplete li');
         $this->assertNotNull($result);
-        // Select the autocomplete option
+        // Click the autocomplete option
         $result->click();
         // Verify that correct the input is selected.
         $web_assert->pageTextContains('Term 1');
