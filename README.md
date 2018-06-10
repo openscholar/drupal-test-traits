@@ -1,5 +1,6 @@
 # Drupal Test Traits
 
+[![Build status](https://gitlab.com/weitzman/drupal-test-traits/badges/master/build.svg)](https://gitlab.com/weitzman/drupal-test-traits/commits/master)
 [![project-stage-badge]][project-stage-page]
 [![license-badge]][mit]
 
