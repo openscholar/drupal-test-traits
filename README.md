@@ -24,7 +24,7 @@ Pick a test type:
 2. **ExistingSiteJavascript**. See [ExampleJavascriptTest.php](./tests/ExampleJavascriptTest.php). These tests make use of a real Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.  
 
 In addition to a test like above, you must extend a base class. You can extend 
-[ExistingSiteTestBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php) 
+[ExistingSiteBase.php](src/ExistingSiteBase.php) or [ExistingJavascriptBase.php](src/ExistingSiteJavascriptBase.php) 
 from your own base classes or directly from your tests.
 
   
