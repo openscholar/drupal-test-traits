@@ -77,9 +77,9 @@ trait GoutteTrait
         $this->mink = null;
     }
 
-    protected function getSession()
+    protected function getSession($name = null)
     {
-        return $this->mink->getSession();
+        return $this->mink->getSession($name);
     }
 
     protected function getCurrentPage()
