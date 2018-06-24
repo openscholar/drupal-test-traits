@@ -33,6 +33,18 @@
     "autoload": {
         "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
     },
+    "scripts": {
+        "si": "drush si -yv --db-url=mysql://circle:circle@db/circle --account-name=admin --account-pass=password standard",
+        "cs": "phpcs -n --report-full",
+        "cbf": "phpcbf --standard=PSR2 -n src",
+        "lint": "parallel-lint src tests",
+        "unit": "phpunit --debug --colors --bootstrap=src/bootstrap.php tests",
+        "test": [
+            "@lint",
+            "@cs",
+            "@unit"
+        ]
+    },
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"]
