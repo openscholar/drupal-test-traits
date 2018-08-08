@@ -20,9 +20,9 @@ product quality and not conversations, this is a testing approach for you.
 ## Authoring tests
 
 Pick a test type:
-1. **ExistingSite**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
-2. **ExistingSiteJavascript**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of Chrome or FireFox via Selenium, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.
-3. **ExistingSiteJavascript**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite.    
+1. **ExistingSiteBrowser**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
+2. **ExistingSiteSelenium2**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of any browser which can run in web driver mode(Chrome, FireFox or Edge) via Selenium, so are suited to testing Ajax and similar client side interactions. This browser setup can also be used to run Drupal 8 core JS testing using [nightwatch](https://www.drupal.org/node/2968570). These tests run slower than ExistingSite. 
+3. **ExistingSiteWebDriver**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite. 
 
 In addition to a test like above, you must extend a base class. You can extend 
 [ExistingSiteBase.php](src/ExistingSiteBase.php), [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php) 

@@ -11,6 +11,7 @@ services:
       - APACHE_DOCROOT=/var/www/code/web
       - DTT_BASE_URL=http://drupal
       - DTT_API_URL=http://chrome:9222
+      # @todo use firefox once https://github.com/minkphp/MinkSelenium2Driver/pull/289 is fixed.
       - DTT_MINK_DRIVER_ARGS=["chrome", null, "http://selenium:4444/wd/hub"]
       - XDEBUG_ENABLE
       - XDEBUG_CONFIG
