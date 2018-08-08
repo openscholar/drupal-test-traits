@@ -4,9 +4,10 @@
 <!-- Using this project's bootstrap file allows tests in `ExistingSite` and `ExistingsSiteJavascript`
      to run alongside core's 4 test types. -->
 <phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap.php">
-    <env name="DTT_BASE_URL" value="http://example.com"/>
-    <env name="DTT_API_URL" value="http://localhost:9222"/>
-
+    <php>
+        <env name="DTT_BASE_URL" value="http://example.com"/>
+        <env name="DTT_API_URL" value="http://localhost:9222"/>
+    </php>
     <!-- Automatically run all ExistingSite tests alongside unit, and kernel
          tests in custom code. -->
     <testsuites>
