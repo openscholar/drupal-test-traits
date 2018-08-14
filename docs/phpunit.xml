@@ -7,6 +7,7 @@
     <php>
         <env name="DTT_BASE_URL" value="http://example.com"/>
         <env name="DTT_API_URL" value="http://localhost:9222"/>
+        <env name="DTT_MINK_DRIVER_ARGS" value="['firefox', null, 'http://localhost:4444/wd/hub']"/>
     </php>
     <!-- Automatically run all ExistingSite tests alongside unit, and kernel
          tests in custom code. -->

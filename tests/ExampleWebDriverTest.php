@@ -1,18 +1,23 @@
 <?php
 
 // Use your module's testing namespace such as the one below.
-namespace Drupal\Tests\moduleName\ExistingSiteJavascript;
+namespace Drupal\Tests\moduleName\ExampleWebDriverTest;
 
-use Behat\Mink\WebAssert;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Vocabulary;
-use weitzman\DrupalTestTraits\ExistingSiteJavascriptBase;
+use weitzman\DrupalTestTraits\ExistingSiteWebDriverTestBase;
 
 /**
  * A WebDriver test suitable for testing Ajax and client-side interactions.
  */
-class ExampleJavascriptTest extends ExistingSiteJavascriptBase
+class ExampleWebDriverTest extends ExistingSiteWebDriverTestBase
 {
+
+    /**
+     * @throws \Behat\Mink\Exception\ElementNotFoundException
+     * @throws \Behat\Mink\Exception\ExpectationException
+     * @throws \Behat\Mink\Exception\ResponseTextException
+     */
     public function testContentCreation()
     {
         // Create a taxonomy term. Will be automatically cleaned up at the end of the test.
