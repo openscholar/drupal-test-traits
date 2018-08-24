@@ -78,6 +78,10 @@ If you have your own `bootstrap.php` file, refer to [this project's version](src
 - **UserCreationTrait**
   Create users and roles that are deleted at the end of the test method.
   
+- **MailCollectionTrait**  
+  Enables the collection of emails during tests. Assertions can be made against
+  contents of these as core's `AssertMailTrait` is included.  
+  
 ## Contributing
 
 Contributions to the this project are welcome! Please file issues and pull requests.
