@@ -14,7 +14,7 @@ trait WebDriverTrait
     {
         if (!isset($this->driver)) {
             $driverApiUrl = getenv('DTT_API_URL') ?: 'http://127.0.0.1:9222';
-            $this->driver = new ChromeDriver($driverApiUrl, null, $this->minkBaseUrl);
+            $this->driver = new ChromeDriver($driverApiUrl, null, $this->baseUrl);
         }
         return $this->driver;
     }

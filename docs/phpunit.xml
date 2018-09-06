@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Copy code below into your own phpunit.xml file-->
 
-<!-- Using this project's bootstrap file allows tests in `ExistingSite` and `ExistingsSiteJavascript`
+<!-- Using this project's bootstrap file allows tests in `ExistingSite`, `ExistingSiteSelenium2` and `ExistingSiteWebDriver
      to run alongside core's 4 test types. -->
 <phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap.php">
     <php>
         <env name="DTT_BASE_URL" value="http://example.com"/>
         <env name="DTT_API_URL" value="http://localhost:9222"/>
         <env name="DTT_MINK_DRIVER_ARGS" value="['firefox', null, 'http://localhost:4444/wd/hub']"/>
+        <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /path/to/webroot/sites/simpletest/browser_output -->
+        <!-- @todo Update this once https://www.drupal.org/node/2992069 is fixed. -->
+        <!-- The html files are not going into the BROWSERTEST_OUTPUT_DIRECTORY. -->
+        <!-- Instead they are going into /sites/simpletest/browser_output regardless. -->
+        <env name="BROWSERTEST_OUTPUT_DIRECTORY" value=""/>
     </php>
     <!-- Automatically run all ExistingSite tests alongside unit, and kernel
          tests in custom code. -->

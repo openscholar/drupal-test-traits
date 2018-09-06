@@ -14,6 +14,10 @@ class ExampleTest extends ExistingSiteBase
 
     /**
      * An example test method; note that Drupal API's and Mink are available.
+     *
+     * @throws \Drupal\Core\Entity\EntityStorageException
+     * @throws \Drupal\Core\Entity\EntityMalformedException
+     * @throws \Behat\Mink\Exception\ExpectationException
      */
     public function testLlama()
     {
@@ -33,12 +37,11 @@ class ExampleTest extends ExistingSiteBase
         ],
         'uid' => $author->id(),
         ]);
-        $node->setPublished(true)->save();
+        $node->setPublished()->save();
         $this->assertEquals($author->id(), $node->getOwnerId());
-        $url = $node->toUrl()->toString();
 
-        // We can use Mink to browse pages.
-        $this->visit($url);
-        $this->assertEquals($this->getSession()->getStatusCode(), 200);
+        // We can browse pages.
+        $this->drupalGet($node->toUrl());
+        $this->assertSession()->statusCodeEquals(200);
     }
 }

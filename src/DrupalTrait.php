@@ -47,13 +47,12 @@ trait DrupalTrait
         $finder = new DrupalFinder();
         $finder->locateRoot(getcwd());
         $classLoader = include $finder->getVendorDir() . '/autoload.php';
-        $base_url = getenv('DTT_BASE_URL');
-        $parsed_url = parse_url($base_url);
+        $parsed_url = parse_url($this->baseUrl);
         $server = [
             'SCRIPT_FILENAME' => getcwd() . '/index.php',
             'SCRIPT_NAME' => isset($parsed_url['path']) ? $parsed_url['path'] . 'index.php' : '/index.php',
         ];
-        $request = Request::create($base_url, 'GET', [], [], [], $server);
+        $request = Request::create($this->baseUrl, 'GET', [], [], [], $server);
         $this->kernel = DrupalKernel::createFromRequest(
             $request,
             $classLoader,
@@ -77,6 +76,10 @@ trait DrupalTrait
 
         // Register stream wrappers.
         $this->container->get('stream_wrapper_manager')->register();
+
+        // Set up the browser test output file.
+        $this->siteDirectory = 'dtt';
+        $this->initBrowserOutputFile();
     }
 
     /**

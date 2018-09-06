@@ -4,6 +4,7 @@ namespace weitzman\DrupalTestTraits;
 
 use Drupal\KernelTests\AssertLegacyTrait;
 use Drupal\Tests\RandomGeneratorTrait;
+use Drupal\Tests\UiHelperTrait;
 use PHPUnit\Framework\TestCase;
 use weitzman\DrupalTestTraits\Entity\NodeCreationTrait;
 use weitzman\DrupalTestTraits\Entity\TaxonomyCreationTrait;
@@ -23,19 +24,34 @@ abstract class ExistingSiteBase extends TestCase
     use NodeCreationTrait;
     use UserCreationTrait;
     use TaxonomyCreationTrait;
+    use UiHelperTrait;
 
-  // The entity creation traits need this.
+    // The entity creation traits need this.
     use RandomGeneratorTrait;
 
-  // Core is still using this in role creation, so it must be included here when
-  // using the UserCreationTrait.
+    // Core is still using this in role creation, so it must be included here when
+    // using the UserCreationTrait.
     use AssertLegacyTrait;
+
+    /**
+     * The database prefix of this test run.
+     *
+     * @var string
+     */
+    protected $databasePrefix;
+
+    /**
+     * The base URL.
+     *
+     * @var string
+     */
+    protected $baseUrl;
 
     public function setUp()
     {
         parent::setUp();
-        $this->setupDrupal();
         $this->setupMinkSession();
+        $this->setupDrupal();
     }
 
   /**
