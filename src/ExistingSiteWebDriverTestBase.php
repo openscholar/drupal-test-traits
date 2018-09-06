@@ -27,4 +27,13 @@ abstract class ExistingSiteWebDriverTestBase extends ExistingSiteBase
     {
         return new JSWebAssert($this->getSession($name), $this->minkBaseUrl);
     }
+
+  /**
+   * {@inheritdoc}
+   */
+    protected function getHtmlOutputHeaders()
+    {
+      // The webdriver API does not support fetching headers.
+        return '';
+    }
 }
