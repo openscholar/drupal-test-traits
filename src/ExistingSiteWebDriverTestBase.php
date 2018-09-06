@@ -15,17 +15,11 @@ abstract class ExistingSiteWebDriverTestBase extends ExistingSiteBase
     use WebDriverTrait;
 
     /**
-     * Get Javascript assert session. Analogous to \Drupal\Tests\BrowserTestBase::assertSession.
-     *
-     * @param string $name
-     *   (optional) Name of the session. Defaults to the active session.
-     *
-     * @return \Drupal\FunctionalJavascriptTests\JSWebAssert
-     *   A Mink assertion object.
+     * {@inheritdoc}
      */
     public function assertSession($name = null)
     {
-        return new JSWebAssert($this->getSession($name), $this->minkBaseUrl);
+        return new JSWebAssert($this->getSession($name), $this->baseUrl);
     }
 
   /**

@@ -15,6 +15,7 @@ test:
     - docker-compose exec -T drupal composer install -n --prefer-dist
     - docker-compose exec -T drupal composer lint
     - docker-compose exec -T drupal composer cs
+    - docker-compose exec -T drupal mkdir web/sites/simpletest
     - docker-compose exec -T drupal composer si
     - docker-compose exec -T drupal chown -R www-data:www-data .
     - docker-compose exec -T drupal composer unit

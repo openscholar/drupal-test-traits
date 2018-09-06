@@ -5,6 +5,7 @@ namespace weitzman\DrupalTestTraits;
 use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Mink;
 use Behat\Mink\Session;
+use GuzzleHttp\Client;
 
 trait GoutteTrait
 {
@@ -19,7 +20,7 @@ trait GoutteTrait
      */
     protected $driver;
 
-    protected $minkBaseUrl;
+    protected $baseUrl;
 
     /**
      * @return \Behat\Mink\Driver\DriverInterface
@@ -39,7 +40,7 @@ trait GoutteTrait
      */
     protected function setupMinkSession()
     {
-        $this->minkBaseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
+        $this->baseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
 
         $driver = $this->getDriverInstance();
         $session= new Session($driver);
@@ -49,10 +50,23 @@ trait GoutteTrait
         $this->mink->setDefaultSessionName('default');
         $session->start();
 
-        // Create the artifacts directory if necessary (not functional yet).
-        $output_dir = getenv('DTT_OUTPUT_DIR');
+        // Create the artifacts directory if necessary.
+        $output_dir = getenv('BROWSERTEST_OUTPUT_DIRECTORY');
         if ($output_dir && !is_dir($output_dir)) {
             mkdir($output_dir, 0777, true);
+        }
+
+        if ($driver instanceof GoutteDriver) {
+            // Inject a Guzzle middleware to generate debug output for every request
+            // performed in the test.
+
+            // Turn off curl timeout. Having a timeout is not a problem in a normal
+            // test running, but it is a problem when debugging. Also, disable SSL
+            // peer verification so that testing under HTTPS always works.
+            $client = new Client(['timeout' => null, 'verify' => false]);
+            $handler_stack = $client->getConfig('handler');
+            $handler_stack->push($this->getResponseLogHandler());
+            $driver->getClient()->setClient($client);
         }
 
         // According to the W3C WebDriver specification a cookie can only be set if
@@ -63,7 +77,7 @@ trait GoutteTrait
         // document matches the domain.
         // @see https://w3c.github.io/webdriver/webdriver-spec.html#add-cookie
         // @see https://www.w3.org/Bugs/Public/show_bug.cgi?id=20975
-        $this->visit($this->minkBaseUrl . '/core/misc/druplicon.png');
+        $this->visit($this->baseUrl . '/core/misc/druplicon.png');
     }
 
     /**
@@ -95,7 +109,7 @@ trait GoutteTrait
     protected function visit($url)
     {
         if (!parse_url($url, PHP_URL_SCHEME)) {
-            $url = $this->minkBaseUrl . $url;
+            $url = $this->baseUrl . $url;
         }
         $this->getSession()->visit($url);
     }
