@@ -36,7 +36,9 @@
         "psr-4": { "weitzman\\DrupalTestTraits\\": "src" }
     },
     "scripts": {
-        "si": "drush si -yv --db-url=mysql://circle:circle@db/circle --account-name=admin --account-pass=password standard",
+        "si": [
+            "drush si -yv --db-url=mysql://circle:circle@db/circle --account-name=admin --account-pass=password standard"
+        ],
         "cs": "phpcs -n --report-full",
         "cbf": "phpcbf --standard=PSR2 -n src tests",
         "lint": "parallel-lint src tests",
