@@ -28,7 +28,7 @@ Extend the base class that corresponds to your pick above:
 [ExistingSiteBase.php](src/ExistingSiteBase.php), [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php). 
 You may extend it directly from your test class or create a base class for your project that extends one of these.
 
-To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php) for JS(Ajax and similar client side interactions) testing read [testing Drupal with WebDriver browser mode vs Headless browser mode](https://www.previousnext.com.au/blog/testing-drupal-webdriver-browser-mode-vs-headless-browser-mode) for more information.
+To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php) for JS (Ajax and similar client side interactions) testing read [testing Drupal with WebDriver browser mode vs Headless browser mode](https://www.previousnext.com.au/blog/testing-drupal-webdriver-browser-mode-vs-headless-browser-mode).
   
 ## Running tests
 
