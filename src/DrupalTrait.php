@@ -50,7 +50,7 @@ trait DrupalTrait
         $parsed_url = parse_url($this->baseUrl);
         $server = [
             'SCRIPT_FILENAME' => getcwd() . '/index.php',
-            'SCRIPT_NAME' => isset($parsed_url['path']) ? $parsed_url['path'] . 'index.php' : '/index.php',
+            'SCRIPT_NAME' => isset($parsed_url['path']) ? $parsed_url['path'] . '/index.php' : '/index.php',
         ];
         $request = Request::create($this->baseUrl, 'GET', [], [], [], $server);
         $this->kernel = DrupalKernel::createFromRequest(
