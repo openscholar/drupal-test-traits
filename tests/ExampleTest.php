@@ -4,6 +4,7 @@
 namespace Drupal\Tests\moduleName\ExistingSite;
 
 use Drupal\taxonomy\Entity\Vocabulary;
+use Drupal\user\Entity\User;
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 
 /**
@@ -43,5 +44,9 @@ class ExampleTest extends ExistingSiteBase
         // We can browse pages.
         $this->drupalGet($node->toUrl());
         $this->assertSession()->statusCodeEquals(200);
+
+        // We can login and browse admin pages.
+        $this->drupalLogin(User::load(1));
+        $this->drupalGet($node->toUrl('edit-form'));
     }
 }
