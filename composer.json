@@ -49,6 +49,11 @@
             "@unit"
         ]
     },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "process-timeout": 9600
+    },
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"]
@@ -57,8 +62,8 @@
             "drupal/core": {
                 "Test runs can throw exceptions due to missing .htkey file (https://www.drupal.org/project/drupal/issues/2246725#comment-12160940)": "https://www.drupal.org/files/issues/2246725-24.patch"
             }
-        }
-    },
-    "enable-patching": true,
-    "composer-exit-on-patch-failure": true
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true
+    }
 }
