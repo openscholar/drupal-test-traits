@@ -23,7 +23,7 @@ class ExampleTest extends ExistingSiteBase
     public function testLlama()
     {
         // Creates a user. Will be automatically cleaned up at the end of the test.
-        $author = $this->createUser();
+        $author = $this->createUser([], null, TRUE);
 
         // Create a taxonomy term. Will be automatically cleaned up at the end of the test.
         $vocab = Vocabulary::load('tags');
@@ -46,7 +46,7 @@ class ExampleTest extends ExistingSiteBase
         $this->assertSession()->statusCodeEquals(200);
 
         // We can login and browse admin pages.
-        $this->drupalLogin(User::load(1));
+        $this->drupalLogin($author);
         $this->drupalGet($node->toUrl('edit-form'));
     }
 }
