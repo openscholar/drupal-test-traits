@@ -23,7 +23,7 @@ class ExampleTest extends ExistingSiteBase
     public function testLlama()
     {
         // Creates a user. Will be automatically cleaned up at the end of the test.
-        $author = $this->createUser([], null, TRUE);
+        $author = $this->createUser([], null, true);
 
         // Create a taxonomy term. Will be automatically cleaned up at the end of the test.
         $vocab = Vocabulary::load('tags');
