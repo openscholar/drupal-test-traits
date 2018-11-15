@@ -89,10 +89,8 @@ trait DrupalTrait
      */
     public function tearDownDrupal()
     {
-        foreach ($this->cleanupEntities as $entityType => $entities) {
-            foreach ($entities as $entity) {
-                $entity->delete();
-            }
+        foreach ($this->cleanupEntities as $entity) {
+            $entity->delete();
         }
       // Avoid leaking memory in test cases (which are retained for a long time)
       // by removing references to all the things.
@@ -113,17 +111,6 @@ trait DrupalTrait
      */
     protected function markEntityForCleanup(EntityInterface $entity)
     {
-        $this->cleanupEntities[$entity->getEntityTypeId()][$entity->id()] = $entity;
-    }
-
-    /**
-     * Unmark an entity for deletion.
-     *
-     * @param \Drupal\Core\Entity\EntityInterface $entity
-     *   Entity to not delete.
-     */
-    protected function unMarkEntityForCleanup(EntityInterface $entity)
-    {
-        unset($this->cleanupEntities[$entity->getEntityTypeId()][$entity->id()]);
+        $this->cleanupEntities[] = $entity;
     }
 }
