@@ -47,7 +47,7 @@ abstract class ExistingSiteBase extends TestCase
      */
     protected $baseUrl;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
         $this->setupMinkSession();

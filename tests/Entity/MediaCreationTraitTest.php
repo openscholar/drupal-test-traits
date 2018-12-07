@@ -11,7 +11,7 @@ use weitzman\DrupalTestTraits\ExistingSiteBase;
 class MediaCreationTraitTest extends ExistingSiteBase
 {
     use MediaCreationTrait;
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
         $status = \Drupal::service('module_installer')
