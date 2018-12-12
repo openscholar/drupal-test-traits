@@ -63,7 +63,6 @@
                 "#2246725-34: Test runs can throw exceptions due to missing .htkey file": "https://www.drupal.org/files/issues/2018-11-30/2246725-34.patch"
             }
         },
-        "enable-patching": true,
         "composer-exit-on-patch-failure": true
     }
 }
