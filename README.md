@@ -6,7 +6,7 @@
 
 ## Introduction
 
-Traits for testing Drupal sites that have user content (versus unpopulated sites).
+Traits for testing Drupal sites that have user content (versus unpopulated sites). Introduction to Drupal Testing Traits and a step by step guide can be found at [Introducing Drupal Testing Traits: Drupal extension for testing existing sites](https://www.previousnext.com.au/node/665).
 
 [Behat](http://behat.org) is great for facilitating conversations between 
 business managers and developers. Those are useful conversations, but many 
