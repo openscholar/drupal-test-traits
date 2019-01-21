@@ -15,7 +15,7 @@ trait DrupalTrait
      *
      * @var bool
      */
-    static protected $restoredErrorHandler = false;
+    protected static $restoredErrorHandler = false;
 
     /**
      * Entities to clean up.
