@@ -21,8 +21,8 @@ product quality and not conversations, this is a testing approach for you.
 
 Pick a test type:
 1. **ExistingSiteBrowser**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
-2. **ExistingSiteSelenium2**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of any browser which can run in web driver mode(Chrome, FireFox or Edge) via Selenium, so are suited to testing Ajax and similar client side interactions. This browser setup can also be used to run Drupal 8 core JS testing using [nightwatch](https://www.drupal.org/node/2968570). These tests run slower than ExistingSite. 
-3. **ExistingSiteWebDriver**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite. 
+2. **ExistingSiteSelenium2**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of any browser which can run in web driver mode(Chrome, FireFox or Edge) via Selenium, so are suited to testing Ajax and similar client side interactions. This browser setup can also be used to run Drupal 8 core JS testing using [nightwatch](https://www.drupal.org/node/2968570). These tests run slower than ExistingSite. To use this test type you need to `composer require 'behat/mink-selenium2-driver'`
+3. **ExistingSiteWebDriver**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite. To use this test type you need to `composer require 'dmore/chrome-mink-driver'`
 
 Extend the base class that corresponds to your pick above:
 [ExistingSiteBase.php](src/ExistingSiteBase.php), [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php). 
