@@ -45,9 +45,6 @@ class ExampleTest extends ExistingSiteBase
         $this->drupalGet($node->toUrl());
         $this->assertSession()->statusCodeEquals(200);
 
-        $this->drupalGet($node->toUrl());
-        $this->assertSession()->pageTextContains($site_name);
-
         // We can login and browse admin pages.
         $this->drupalLogin($author);
         $this->drupalGet($node->toUrl('edit-form'));
