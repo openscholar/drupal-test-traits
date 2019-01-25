@@ -24,4 +24,18 @@ trait Selenium2DriverTrait
         }
         return $this->driver;
     }
+
+    /**
+     * Returns headers in HTML output format.
+     *
+     * Response headers are unavailable with Selenium2Driver - return nothing and
+     * avoid an Exception.
+     *
+     * @return string
+     *   HTML output headers.
+     */
+    protected function getHtmlOutputHeaders()
+    {
+        return '';
+    }
 }
