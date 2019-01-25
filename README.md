@@ -36,28 +36,16 @@ To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverT
     - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
     - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
-- Add --bootstrap option like so: `--bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php `
-- Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+- Run phpunit with a --bootstrap option like so: `vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php web/modules/custom`
+- Optional. Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Debugging tests
 
 - For ExistingSite, all HTML requests can be logged: 
     - Define the environment variable BROWSERTEST_OUTPUT_DIRECTORY. See .env.example or [docs/phpunit.xml](docs/phpunit.xml) for guidance.
-    - Add `--printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter'` to the phpunit call. Alternatively specify this in a [phpunit.xml](docs/phpunit.xml).  
+    - Add `--printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter'` to the phpunit call. Alternatively specify same in a [phpunit.xml](docs/phpunit.xml). Add SYMFONY_DEPRECATIONS_HELPER=disabled to silence deprecation notices.  
 - For ExistingSiteSelenium2 or ExistingSiteWebDriver , use `file_put_contents('public://screenshot.jpg', $this->getSession()->getScreenshot());` to take screenshot of the current page.
 - To check the current HTML of the page use `file_put_contents('public://' . drupal_basename($session->getCurrentUrl()) . '.html', $this->getCurrentPageContent());`
-
-### Bootstrap options
-To allow use of `ExistingSite` and `ExistingSiteJavascript` autoloading to be work alongside core's (`Unit`, `Kernel`, etc),
-this project's [`bootstrap.php`](src/bootstrap.php) should be used:
-
-```bash
-vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php
-```
-Alternatively, specify this in a custom `phpunit.xml` file ([See example](docs/phpunit.xml)).
-
-If you have your own `bootstrap.php` file, refer to [this project's version](src/bootstrap.php), and add the
-`ExistingSite` and `ExistingSiteJavascript` namespaces logic to your own.
 
 ## Available traits
 
