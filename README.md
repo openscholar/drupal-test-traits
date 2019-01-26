@@ -16,7 +16,6 @@ product quality and not conversations, this is a testing approach for you.
 ## Installation
 
 - Install via Composer. `composer require weitzman/drupal-test-traits`.
-- [Add one drupal/core patch to your composer.json](https://gitlab.com/weitzman/drupal-test-traits/blob/1.0.0-beta.2/composer.json#L61-65).
 
 ## Authoring tests
 

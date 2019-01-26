@@ -63,4 +63,12 @@ abstract class ExistingSiteBase extends TestCase
         $this->tearDownDrupal();
         $this->tearDownMinkSession();
     }
+
+    /**
+     * Override \Drupal\Tests\UiHelperTrait::prepareRequest since it generates
+     * an error, and does nothing useful for DTT. @see https://www.drupal.org/node/2246725.
+     */
+    protected function prepareRequest()
+    {
+    }
 }
