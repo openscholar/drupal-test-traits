@@ -34,4 +34,12 @@ abstract class ExistingSiteWebDriverTestBase extends ExistingSiteBase
       // The webdriver API does not support fetching headers.
         return '';
     }
+
+    /**
+     * Override \Drupal\Tests\UiHelperTrait::prepareRequest since it generates
+     * an error, and does nothing useful for DTT. @see https://www.drupal.org/node/2246725.
+     */
+    protected function prepareRequest()
+    {
+    }
 }
