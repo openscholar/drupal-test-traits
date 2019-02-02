@@ -73,7 +73,14 @@ To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverT
   
 - **MailCollectionTrait**  
   Enables the collection of emails during tests. Assertions can be made against
-  contents of these as core's `AssertMailTrait` is included.  
+  contents of these as core's `AssertMailTrait` is included.
+
+## Contributed Packages
+
+Submit a [Merge Request](https://docs.gitlab.com/ee/user/project/merge_requests/) to get your Trait added to this list. Use `type="drupal-dtt"` in your package's composer.json in order to [this list](https://packagist.org/?type=drupal-dtt).
+
+- [LoginTrait](https://gitlab.com/weitzman/logintrait.git). Provides login/logout via user reset URL instead of forms. Useful when TFA/SAML are enabled.
+- [More packages](https://packagist.org/?type=drupal-dtt)
   
 ## Contributing
 
