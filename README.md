@@ -13,6 +13,9 @@ business managers and developers. Those are useful conversations, but many
 organizations simply can't/wont converse via Gherkin. When you are on the hook for 
 product quality and not conversations, this is a testing approach for you. 
 
+- Blog: [Introducing Drupal Test Traits](https://medium.com/massgovdigital/introducing-drupal-test-traits-9fe09e84384c)
+- Blog: [Introducing Drupal Test Traits: Drupal extension for testing existing sites](https://www.previousnext.com.au/blog/introducing-drupal-testing-traits-drupal-extension-testing-existing-sites)
+
 ## Installation
 
 - Install via Composer. `composer require weitzman/drupal-test-traits`.
