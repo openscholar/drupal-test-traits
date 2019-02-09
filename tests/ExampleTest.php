@@ -31,12 +31,12 @@ class ExampleTest extends ExistingSiteBase
 
         // Create a "Llama" article. Will be automatically cleaned up at end of test.
         $node = $this->createNode([
-        'title' => 'Llama',
-        'type' => 'article',
-        'field_tags' => [
-        'target_id' => $term->id(),
-        ],
-        'uid' => $author->id(),
+            'title' => 'Llama',
+            'type' => 'article',
+            'field_tags' => [
+                'target_id' => $term->id(),
+            ],
+            'uid' => $author->id(),
         ]);
         $node->setPublished()->save();
         $this->assertEquals($author->id(), $node->getOwnerId());

@@ -24,7 +24,6 @@
     "require-dev": {
         "behat/mink-selenium2-driver": "1.3.x-dev",
         "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6",
         "dmore/chrome-mink-driver": "^2.6",
         "drupal-composer/drupal-scaffold": "2.3.0",
         "drupal/core": "^8.6",
@@ -57,12 +56,6 @@
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"]
-        },
-        "patches": {
-            "drupal/core": {
-                "#2246725-34: Test runs can throw exceptions due to missing .htkey file": "https://www.drupal.org/files/issues/2018-11-30/2246725-34.patch"
-            }
-        },
-        "composer-exit-on-patch-failure": true
+        }
     }
 }

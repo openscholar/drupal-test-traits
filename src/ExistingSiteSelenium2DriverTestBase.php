@@ -25,4 +25,12 @@ abstract class ExistingSiteSelenium2DriverTestBase extends ExistingSiteBase
         $this->addToAssertionCount(1);
         return new JSWebAssert($this->getSession($name), $this->baseUrl);
     }
+
+    /**
+     * Override \Drupal\Tests\UiHelperTrait::prepareRequest since it generates
+     * an error, and does nothing useful for DTT. @see https://www.drupal.org/node/2246725.
+     */
+    protected function prepareRequest()
+    {
+    }
 }

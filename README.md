@@ -6,23 +6,26 @@
 
 ## Introduction
 
-Traits for testing Drupal sites that have user content (versus unpopulated sites). Introduction to Drupal Testing Traits and a step by step guide can be found at [Introducing Drupal Testing Traits: Drupal extension for testing existing sites](https://www.previousnext.com.au/node/665).
+Traits for testing Drupal sites that have user content (versus unpopulated sites).
 
 [Behat](http://behat.org) is great for facilitating conversations between 
 business managers and developers. Those are useful conversations, but many 
 organizations simply can't/wont converse via Gherkin. When you are on the hook for 
 product quality and not conversations, this is a testing approach for you. 
 
+- Blog: [Introducing Drupal Test Traits](https://medium.com/massgovdigital/introducing-drupal-test-traits-9fe09e84384c)
+- Blog: [Introducing Drupal Test Traits: Drupal extension for testing existing sites](https://www.previousnext.com.au/blog/introducing-drupal-testing-traits-drupal-extension-testing-existing-sites)
+
 ## Installation
 
-    composer require 'weitzman/drupal-test-traits'
+- Install via Composer. `composer require weitzman/drupal-test-traits`.
 
 ## Authoring tests
 
 Pick a test type:
-1. **ExistingSiteBrowser**. See [ExampleTest.php](./tests/ExampleTest.php). These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
-2. **ExistingSiteSelenium2**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of any browser which can run in web driver mode(Chrome, FireFox or Edge) via Selenium, so are suited to testing Ajax and similar client side interactions. This browser setup can also be used to run Drupal 8 core JS testing using [nightwatch](https://www.drupal.org/node/2968570). These tests run slower than ExistingSite. 
-3. **ExistingSiteWebDriver**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite. 
+1. **ExistingSiteBrowser**. See [ExampleTest.php](./tests/ExampleTest.php). Start here. These tests can be small unit tests up to larger Functional tests (via [Goutte](http://goutte.readthedocs.io/en/latest/)).
+2. **ExistingSiteSelenium2**. See [ExampleSelenium2DriverTest.php](tests/ExampleSelenium2DriverTest.php). These tests make use of any browser which can run in web driver mode(Chrome, FireFox or Edge) via Selenium, so are suited to testing Ajax and similar client side interactions. This browser setup can also be used to run Drupal 8 core JS testing using [nightwatch](https://www.drupal.org/node/2968570). These tests run slower than ExistingSite. To use this test type you need to `composer require 'behat/mink-selenium2-driver'`
+3. **ExistingSiteWebDriver**. See [ExampleWebDriverTest.php](tests/ExampleWebDriverTest.php). These tests make use of a headless Chrome browser, so are suited to testing Ajax and similar client side interactions. These tests run slower than ExistingSite. To use this test type you need to `composer require 'dmore/chrome-mink-driver'`
 
 Extend the base class that corresponds to your pick above:
 [ExistingSiteBase.php](src/ExistingSiteBase.php), [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverTestBase.php), or [ExistingSiteSelenium2DriverTestBase.php](src/ExistingSiteSelenium2DriverTestBase.php). 
@@ -36,28 +39,16 @@ To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverT
     - Specify in a phpunit.xml. [See example](docs/phpunit.xml).
     - Enter that line into a .env file. These files are supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/). 
     - Specify environment variables at runtime: `DTT_BASE_URL=http://127.0.0.1:8888;DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
-- Add --bootstrap option like so: `--bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php `
-- Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+- Run phpunit with a --bootstrap option like so: `vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php web/modules/custom`
+- Optional. Depending on your setup, you may wish to run phpunit as the web server user `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
 
 ## Debugging tests
 
 - For ExistingSite, all HTML requests can be logged: 
     - Define the environment variable BROWSERTEST_OUTPUT_DIRECTORY. See .env.example or [docs/phpunit.xml](docs/phpunit.xml) for guidance.
-    - Add `--printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter'` to the phpunit call. Alternatively specify this in a [phpunit.xml](docs/phpunit.xml).  
+    - Add `--printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter'` to the phpunit call. Alternatively specify same in a [phpunit.xml](docs/phpunit.xml). Add SYMFONY_DEPRECATIONS_HELPER=disabled to silence deprecation notices.  
 - For ExistingSiteSelenium2 or ExistingSiteWebDriver , use `file_put_contents('public://screenshot.jpg', $this->getSession()->getScreenshot());` to take screenshot of the current page.
 - To check the current HTML of the page use `file_put_contents('public://' . drupal_basename($session->getCurrentUrl()) . '.html', $this->getCurrentPageContent());`
-
-### Bootstrap options
-To allow use of `ExistingSite` and `ExistingSiteJavascript` autoloading to be work alongside core's (`Unit`, `Kernel`, etc),
-this project's [`bootstrap.php`](src/bootstrap.php) should be used:
-
-```bash
-vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php
-```
-Alternatively, specify this in a custom `phpunit.xml` file ([See example](docs/phpunit.xml)).
-
-If you have your own `bootstrap.php` file, refer to [this project's version](src/bootstrap.php), and add the
-`ExistingSite` and `ExistingSiteJavascript` namespaces logic to your own.
 
 ## Available traits
 
@@ -85,7 +76,14 @@ If you have your own `bootstrap.php` file, refer to [this project's version](src
   
 - **MailCollectionTrait**  
   Enables the collection of emails during tests. Assertions can be made against
-  contents of these as core's `AssertMailTrait` is included.  
+  contents of these as core's `AssertMailTrait` is included.
+
+## Contributed Packages
+
+Submit a [Merge Request](https://docs.gitlab.com/ee/user/project/merge_requests/) to get your Trait added to this list. Use `type="drupal-dtt"` in your package's composer.json in order to [this list](https://packagist.org/?type=drupal-dtt).
+
+- [LoginTrait](https://gitlab.com/weitzman/logintrait.git). Provides login/logout via user reset URL instead of forms. Useful when TFA/SAML are enabled.
+- [More packages](https://packagist.org/?type=drupal-dtt)
   
 ## Contributing
 
