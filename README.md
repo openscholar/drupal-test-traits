@@ -77,6 +77,11 @@ To choose between [ExistingSiteWebDriverTestBase.php](src/ExistingSiteWebDriverT
 - **MailCollectionTrait**  
   Enables the collection of emails during tests. Assertions can be made against
   contents of these as core's `AssertMailTrait` is included.
+  
+- **ScreenShotTrait**  
+  Allows for capture of screenshots when using Webdriver or Selenium2 drivers.
+  The destination directory can be set via an environment variable
+  `DTT_SCREENSHOT_REPORT_DIRECTORY` (which can also be set in `phpunit.xml`), defaults to /sites/simpletest/browser_output.
 
 ## Contributed Packages
 
