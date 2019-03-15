@@ -4,7 +4,9 @@ namespace weitzman\DrupalTestTraits;
 
 use Behat\Mink\Driver\GoutteDriver;
 use Behat\Mink\Mink;
+use Behat\Mink\Selector\SelectorsHandler;
 use Behat\Mink\Session;
+use Drupal\Tests\HiddenFieldSelector;
 use GuzzleHttp\Client;
 
 trait GoutteTrait
@@ -43,7 +45,10 @@ trait GoutteTrait
         $this->baseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
 
         $driver = $this->getDriverInstance();
-        $session= new Session($driver);
+        $selectors_handler = new SelectorsHandler([
+          'hidden_field_selector' => new HiddenFieldSelector(),
+        ]);
+        $session= new Session($driver, $selectors_handler);
         $this->mink = new Mink([
             'default' => $session,
         ]);
