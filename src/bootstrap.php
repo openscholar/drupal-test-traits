@@ -1,9 +1,12 @@
 <?php
-
 /**
  * @file
- * PHPUnit bootstrap functionality to pull in ExistingSite tests.
+ *   A bootstrap file for `phpunit` test runner.
+ *
+ * This file registers all Drupal modules and their test directories
+ * for autoloading. The downside is that it is slower than bootstrap-fast.php.
  */
+
 
 use DrupalFinder\DrupalFinder;
 

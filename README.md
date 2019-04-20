@@ -33,7 +33,7 @@ Extend the base class that corresponds to your pick above: [ExistingSiteBase.php
     - Add them to your `phpunit.xml` ([example phpunit.xml](docs/phpunit.xml)).
     - Add them to your `.env` (supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/)). 
     - Specify them at runtime: `DTT_BASE_URL=http://127.0.0.1:8888; DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
-3. Run `phpunit` with the `--bootstrap` option: `vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap.php ...`. This bootstrap can also be referenced in your `phpunit.xml` ([example phpunit.xml](docs/phpunit.xml)). Depending on your setup, you may wish to run `phpunit` as the web server user: `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`
+3. Run `phpunit` with the `--bootstrap` option: `vendor/bin/phpunit --bootstrap=vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php ...`. This bootstrap can also be referenced in your `phpunit.xml` ([example phpunit.xml](docs/phpunit.xml)). Depending on your setup, you may wish to run `phpunit` as the web server user: `su -s /bin/bash www-data -c "vendor/bin/phpunit ..."`. If you get 'Class not found' errors, please see comments at top of [bootstrap-fast.php](src/bootstrap-fast.php)
 
 You should limit these test runs to your custom functionality only; testing Core and Contrib modules is already the purview of DrupalCI. To do so, tell `phpunit` to only look for tests in a certain path, or use `@group` annotations to limit the scope. The following examples depend on a properly configured `phpunit.xml` ([example phpunit.xml](docs/phpunit.xml)):
 
