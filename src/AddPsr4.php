@@ -6,6 +6,9 @@ use DrupalFinder\DrupalFinder;
 class AddPsr4
 {
 
+    /**
+     * @return array
+     */
     public static function add()
     {
         $finder = new DrupalFinder();
@@ -22,5 +25,7 @@ class AddPsr4
             $class_loader->addPsr4('Drupal\Tests\\' . $module . '\\', "$root/core/modules/$module/tests/src");
         }
         $class_loader->addPsr4('Drupal\\', "$root/core/tests/Drupal");
+
+        return [$finder, $class_loader];
     }
 }

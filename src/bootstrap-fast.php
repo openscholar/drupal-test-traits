@@ -13,16 +13,10 @@
  * but registers all the namespaces that Drupal tests expect.
  */
 
-use DrupalFinder\DrupalFinder;
 use weitzman\DrupalTestTraits\AddPsr4;
 
-$finder = new DrupalFinder();
-$finder->locateRoot(getcwd());
+list($finder, $class_loader) = AddPsr4::add();
 $root = $finder->getDrupalRoot();
-$vendor = $finder->getVendorDir();
-
-AddPsr4::add();
 
 // Register more namespaces, as needed.
-# $class_loader = require "$vendor/autoload.php";
 # $class_loader->addPsr4('Drupal\Tests\my_module\\', "$root/modules/custom/my_module/tests/src");
