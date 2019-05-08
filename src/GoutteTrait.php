@@ -42,7 +42,9 @@ trait GoutteTrait
      */
     protected function setupMinkSession()
     {
-        $this->baseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
+        if (empty($this->baseUrl)) {
+            $this->baseUrl = getenv('DTT_BASE_URL') ?: 'http://localhost:8000';
+        }
 
         $driver = $this->getDriverInstance();
         $selectors_handler = new SelectorsHandler([
