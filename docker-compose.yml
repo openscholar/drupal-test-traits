@@ -14,7 +14,7 @@ services:
       - COMPOSER_ALLOW_SUPERUSER=1
       # @todo use firefox once https://github.com/minkphp/MinkSelenium2Driver/pull/289 is fixed.
       - DTT_MINK_DRIVER_ARGS=["chrome", null, "http://selenium:4444/wd/hub"]
-      - BROWSERTEST_OUTPUT_DIRECTORY
+      - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
       - XDEBUG_ENABLE
       - XDEBUG_CONFIG
       # Suggested by https://confluence.jetbrains.com/display/PhpStorm/Debugging+PHP+CLI+scripts+with+PhpStorm#DebuggingPHPCLIscriptswithPhpStorm-2.StarttheScriptwithDebuggerOptions

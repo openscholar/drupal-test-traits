@@ -42,7 +42,7 @@
         "cs": "phpcs -n --report-full",
         "cbf": "phpcbf --standard=PSR2 -n src tests",
         "lint": "parallel-lint src tests",
-        "unit": "phpunit --debug --colors --bootstrap=src/bootstrap-fast.php --printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter' tests",
+        "unit": "phpunit --debug --colors --bootstrap=src/bootstrap-fast.php --printer '\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter' --log-junit web/sites/simpletest/browser_output/junit.xml tests",
         "test": [
             "@lint",
             "@cs",

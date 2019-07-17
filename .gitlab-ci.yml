@@ -20,3 +20,10 @@ test:
     - docker-compose exec -T drupal composer si
     - docker-compose exec -T drupal chown -R www-data:www-data .
     - docker-compose exec -T drupal composer unit
+  artifacts:
+    when: on_failure
+    expire_in: 5 mos
+    reports:
+      junit: web/sites/simpletest/browser_output/junit.xml
+    paths:
+      - web/sites/simpletest/browser_output
