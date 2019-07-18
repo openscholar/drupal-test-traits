@@ -49,7 +49,8 @@ services:
 
   # See https://github.com/SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
   selenium:
-    image: selenium/standalone-chrome
+    # Pinned due to DOM failures with latest stable.
+    image: selenium/standalone-chrome:3.141.59-oxygen
     ports:
       - "${SELENIUM2DRIVER_PORT-4444}:4444"
 

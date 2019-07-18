@@ -71,11 +71,9 @@ trait DrupalTrait
         }
 
         chdir(DRUPAL_ROOT);
-        $this->kernel->prepareLegacyRequest($request);
+        $this->kernel->boot();
+        $this->kernel->preHandle($request);
         $this->container = $this->kernel->getContainer();
-
-        // Register stream wrappers.
-        $this->container->get('stream_wrapper_manager')->register();
 
         // Set up the browser test output file.
         $this->siteDirectory = 'dtt';
