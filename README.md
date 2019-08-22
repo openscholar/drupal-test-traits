@@ -84,6 +84,7 @@ Submit a [merge request](https://docs.gitlab.com/ee/user/project/merge_requests/
 Use `type="drupal-dtt"` in your package's `composer.json` in order to appear in [this list](https://packagist.org/?type=drupal-dtt).
 
 - [LoginTrait](https://gitlab.com/weitzman/logintrait.git). Provides login/logout via user reset URL instead of forms. Useful when TFA/SAML are enabled.
+- [QueueRunnerTrait](https://github.com/drupaltest/queue-runner-trait/). Provides methods to clear and run queues during tests.
   
 ## Contributing
 
