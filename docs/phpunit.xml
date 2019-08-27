@@ -9,6 +9,7 @@
     <php>
         <env name="DTT_BASE_URL" value="http://example.com"/>
         <env name="DTT_API_URL" value="http://localhost:9222"/>
+        <!-- <env name="DTT_MINK_DRIVER_ARGS" value='["chrome", { "chromeOptions" : { "w3c": false } }, "http://localhost:4444/wd/hub"]'/> -->
         <env name="DTT_MINK_DRIVER_ARGS" value='["firefox", null, "http://localhost:4444/wd/hub"]'/>
         <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /tmp
              Specify a temporary directory for storing debug images and html documents.
