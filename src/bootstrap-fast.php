@@ -5,12 +5,13 @@
  *
  * This bootstrap file from DTT is fast and customizable.
  *
- * If you get 'class not found' 'during test running, you may add copy and add
- * the missing namespaces to bottom of this file. Then specify that file for
- * PHPUnit bootstrap.
+ * If you get 'class not found' errors while running tests, you should copy this
+ * file to a location inside your code-base --such as `/scripts`. Then add the
+ * missing namespaces to the bottom of the copied field. Specify your custom
+ * `bootstrap-fast.php` file as the bootstrap in `phpunit.xml`.
  *
- * Alternatively, use the bootstrap.php file in this same directory which is slower
- * but registers all the namespaces that Drupal tests expect.
+ * Alternatively, use the bootstrap.php file, in this same directory, which is
+ * slower but registers all the namespaces that Drupal tests expect.
  */
 
 use weitzman\DrupalTestTraits\AddPsr4;
