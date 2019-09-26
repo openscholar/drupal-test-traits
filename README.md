@@ -29,7 +29,7 @@ Extend the base class that corresponds to your pick above: [ExistingSiteBase.php
 ## Running tests
 
 1. Create or edit `phpunit.xml` to include new testsuites for `existing-site` and `existing-site-javascript` ([example phpunit.xml](docs/phpunit.xml)).
-2. Specify the URL to your existing site with `DTT_BASE_URL=http://example.com`. For ExistingSiteSelenium2DriverTest tests, also specify `DTT_MINK_DRIVER_ARGS=["firefox", null, "http://selenium:9222/wd/hub"]`. For ExistingSiteWebDriverTest tests, also specify `DTT_API_URL=http://localhost:9222`. You can specify these environment variables one of three ways:
+2. Specify the URL to your existing site with `DTT_BASE_URL=http://example.com`. For ExistingSiteSelenium2DriverTest tests, also specify `DTT_MINK_DRIVER_ARGS=["firefox", null, "http://selenium:9222/wd/hub"]`. For ExistingSiteWebDriverTest tests, also specify `DTT_API_URL=http://localhost:9222`. You can also change timeouts like this: `DTT_API_OPTIONS={"socketTimeout": 360, "domWaitTimeout": 3600000}` (note the JSON string). You can specify these environment variables one of three ways:
     - Add them to your `phpunit.xml` ([example phpunit.xml](docs/phpunit.xml)).
     - Add them to your `.env` (supported by [drupal-project](https://github.com/drupal-composer/drupal-project/blob/8.x/.env.example) and [Docker](https://docs.docker.com/compose/env-file/)). 
     - Specify them at runtime: `DTT_BASE_URL=http://127.0.0.1:8888; DTT_API_URL=http://localhost:9222 vendor/bin/phpunit ...`
